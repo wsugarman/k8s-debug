@@ -1,17 +1,20 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+ENV ASPNETCORE_URLS=http://+:8080 \
+    DOTNET_EnableDiagnostics=0 \
+    DOTNET_USE_POLLING_FILE_WATCHER=true
 USER app
 WORKDIR /app
 EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["Kubernetes.Web.Mystery.csproj", "."]
+
+COPY [".editorconfig", ".globalconfig", "NuGet.config", "/mystery/"]
+COPY ["./src", "/mystery/src/"]
+WORKDIR /mystery/src/
 RUN dotnet restore "./Kubernetes.Web.Mystery.csproj"
-COPY . .
-WORKDIR "/src/."
 RUN dotnet build "./Kubernetes.Web.Mystery.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

@@ -1,3 +1,6 @@
+# fullnameOverride is the optional name used for the Kubernetes resources. Defaults to a generated name based on the chart.
+fullnameOverride: ""
+
 # image contains settings related to the app image.
 image:
   # repository is the name of the app image.
@@ -8,3 +11,6 @@ image:
   pullPolicy: IfNotPresent
   # pullSecrets is an optional list of references to secrets in the same namespace to use for pulling the app image.
   pullSecrets: []
+
+# nameOverride is the optional name used for the container and Kubernetes resources. Defaults to a generated name based on the chart.
+nameOverride: ""
