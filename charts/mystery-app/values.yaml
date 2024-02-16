@@ -1,0 +1,10 @@
+# image contains settings related to the app image.
+image:
+  # repository is the name of the app image.
+  repository: ghcr.io/wsugarman/mystery-app
+  # tag is the optional tag for the app image. Defaults to appVersion in Chart.yaml.
+  tag: ""
+  # pullPolicy is the policy used by Kubernetes to pull the scaler image. Acceptable values are `Always`, `Never`, or `IfNotPresent`. Defaults to 'IfNotPresent'.
+  pullPolicy: IfNotPresent
+  # pullSecrets is an optional list of references to secrets in the same namespace to use for pulling the app image.
+  pullSecrets: []

@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: "1.0.0"
+description: A mysterious web app that runs in Kubernetes
+name: mystery-app
+type: application
+version: 1.0.0

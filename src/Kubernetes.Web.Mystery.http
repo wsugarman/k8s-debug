@@ -1,0 +1,6 @@
+@Kubernetes.Web.Mystery_HostAddress = http://localhost:5289
+
+GET {{Kubernetes.Web.Mystery_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
